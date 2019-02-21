@@ -1,0 +1,43 @@
+<html>
+
+<head>
+
+    </head>
+<body>
+
+    
+<form  method="post">
+
+    <input type="text" name="username" placeholder="USERNAME" /> <br />
+<input type="text" name="content" placeholder="CONTENT" />
+<input type="text" name="avatar" placeholder="AVATAR IMAGE LINK" />
+<input type="text" name="curl" placeholder="WEBHOOK URL" />
+
+
+    <br />
+<input type="submit" name="submit" />
+</form> 
+
+<?php
+if ( isset( $_POST['submit'] ) ) {
+
+    $content = $_POST["content"]; ; 
+        $username = $_POST["username"]; ;
+                $avatar = $_POST["avatar"]; ; 
+                $curlurl = $_POST["curl"]; ; 
+
+//    
+//https://discordapp.com/api/webhooks/548173149301243906/9woNF2ceNh-fNleQ7YKH1g7eGhOZCczjxkOBE170qWZQeCf0QKBB2xxCVpi6n-gc-BlW
+$curl = curl_init("$curlurl");
+curl_setopt($curl, CURLOPT_POST, 1);
+curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array("content" => "$content","username" => "$username","avatar_url" => "$avatar")));
+
+echo curl_exec($curl);
+
+
+}
+
+?>
+    
+  </body>
+    </html>
