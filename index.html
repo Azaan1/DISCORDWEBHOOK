@@ -27,7 +27,7 @@ if ( isset( $_POST['submit'] ) ) {
                 $curlurl = $_POST["curl"]; ; 
 
 //    
-//https://discordapp.com/api/webhooks/548173149301243906/9woNF2ceNh-fNleQ7YKH1g7eGhOZCczjxkOBE170qWZQeCf0QKBB2xxCVpi6n-gc-BlW
+
 $curl = curl_init("$curlurl");
 curl_setopt($curl, CURLOPT_POST, 1);
 curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(array("content" => "$content","username" => "$username","avatar_url" => "$avatar")));
